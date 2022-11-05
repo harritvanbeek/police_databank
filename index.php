@@ -10,5 +10,5 @@
 
         /* $view   = NEW \classes\view\renderView;
         $view->view($view); */
-        echo "oke test";
+        echo "oke klaas";
     }

@@ -10,8 +10,7 @@ boann.controller('dashboardController', ['$scope', '$http', '$window', '$state',
 
     switch(state){
         case "dashboard" :
-            get_flight();
-            //setInterval(get_flight, 1000);        
+           
         break;
         
         case "my_account" :
@@ -24,17 +23,6 @@ boann.controller('dashboardController', ['$scope', '$http', '$window', '$state',
                 };
             });             
         break;
-    }
-
-    function get_flight(){
-        $http.get("../libraries/callback/callback_msfs.php", {params:{action:"get_flights"}}).then(function(data){
-            if(data.status = 200){            
-                if(data.data){
-                    console.log(data.data[0]);
-                    $scope.flight = data.data[0];                                                            
-                }           
-            };
-        });
     }
 
 }]);
