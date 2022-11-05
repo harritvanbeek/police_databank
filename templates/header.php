@@ -10,10 +10,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     
-    <link href="<?php echo ADMIN_THEMES; ?>/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo ADMIN_THEMES; ?>/css/mdb.min.css" rel="stylesheet">
-    <link href="<?php echo ADMIN_THEMES; ?>/css/boann.min.css?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>" rel="stylesheet">
-    <link href="<?php echo ADMIN_THEMES; ?>/js/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+    <link href="<?php echo THEMES; ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo THEMES; ?>/css/mdb.min.css" rel="stylesheet">
+    <link href="<?php echo THEMES; ?>/css/boann.min.css?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>" rel="stylesheet">
+    <link href="<?php echo THEMES; ?>/js/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
     <style type="text/css">/* Chart.js */
 @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
 </head>

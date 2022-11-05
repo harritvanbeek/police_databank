@@ -8,7 +8,6 @@
         require_once BPATH_BASE . '/includes/defines.php';
         require_once BPATH_BASE . '/includes/framework.php';
 
-        /* $view   = NEW \classes\view\renderView;
-        $view->view($view); */
-        echo "oke klaas";
+        $view   = NEW \classes\view\renderView;
+        $view->view($view);         
     }

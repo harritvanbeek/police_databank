@@ -69,6 +69,5 @@ $GLOBALS["config"]	=	[
 
 
 //import function
-//require_once BOANN_LIBRARIES . '/function.php';
-//require_once BOANN_LIBRARIES . '/loader.php';
-//require_once  BOANN_LIBRARIES .'/api/vendor/autoload.php';
+require_once BOANN_LIBRARIES . '/function.php';
+require_once BOANN_LIBRARIES . '/loader.php';
