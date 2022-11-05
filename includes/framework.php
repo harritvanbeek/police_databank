@@ -48,11 +48,17 @@
 
 $GLOBALS["config"]	=	[
 	"mysql"		=>	[
-		"host"		=>	"{$config->host}",
-		"username"	=>	"{$config->dbuser}",
-		"dbName"	=>	"{$config->dbname}",
-		//"cdbName"	=>	"{$config->citydbname}",
-		"password"	=>	"{$config->dbpassword}",
+		"host"		=>	"{$config->local_host}",
+		"username"	=>	"{$config->local_dbuser}",
+		"dbName"	=>	"{$config->local_dbname}",		
+		"password"	=>	"{$config->local_dbpassword}",
+	],
+
+	"fivem"		=>	[
+		"host"		=>	"{$config->fivem_host}",
+		"username"	=>	"{$config->fivem_dbuser}",
+		"dbName"	=>	"{$config->fivem_dbname}",		
+		"password"	=>	"{$config->fivem_dbpassword}",
 	],
 
 	"boann"		=>	[
