@@ -20,20 +20,7 @@
 
 <div class="PageContent-pageContent Scroller-scroller Scroller-vertical">
     <div class="DiscoverPage-discoverPageContent PageContent-innerPageContent">
-        <div style="margin-bottom: 20px">
-            
-            <div class="row">
-                <div class="col-lg-4">
-                    <h2>Recente reportages</h2>
-                </div>
-                <div class="col-lg-4">
-                    <h2>Recente voertuigen</h2>
-                </div>
-                <div class="col-lg-4">
-                    <h2>Recente zoekopdrachten</h2>
-                </div>
-            </div>
-        </div>
+        <div style="margin-bottom: 20px">laatste informatie</div>
     </div>
 </div>
 

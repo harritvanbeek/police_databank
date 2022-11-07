@@ -12,6 +12,13 @@ class profileView{
     }
 
 
+    public function fullProfile($data = ""){
+        $this->array = ["search" => "{$data}"];
+        $this->query = "SELECT * FROM `profiles` 
+                            WHERE `puuid` = :search ";
+        return $this->_DB->get($this->query, $this->array);
+    }
+
     public function create($data = []){
         $this->query = "INSERT INTO `profiles` (`puuid`, `citizenid`, `firstname`, `lastname`, `datesofbirth`, `sex`, `nationality`) 
                             VALUES(:puuid, :citizenid, :firstname, :lastname, :datesofbirth, :sex, :nationality)

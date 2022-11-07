@@ -2,6 +2,7 @@
 boann.controller('ProfileController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
     var statePage       = $window.location.pathname.split("/")[2].split(".")[0];
+    var searchPage      = $window.location.search.split("=")[1];
     var URI             = controler.view + "profile/index.php"; 
     $scope.profile      = "false";
     $scope.noprofile    = "false";
@@ -9,11 +10,20 @@ boann.controller('ProfileController', ['$scope', '$http', '$window', function($s
     console.log(statePage);
 
     switch(statePage){
+        case "full-profile" :
+            var VALUES = [{data:true, data:searchPage}];  
+            $http.post(URI, VALUES, {params:{action:'fullProfile'}}).then(function(data){
+                $scope.people = data.data;
+                console.log(data.data);
+            });
+
+        break;
+
         case "add-profile" :
             $scope.setProfile   =   function(data){
                 if(data){
                     var VALUES = [{data:true, data:data}];  
-                    $http.post(URI, VALUES, {params:{action:'insertProfiles',}}).then(function(data){
+                    $http.post(URI, VALUES, {params:{action:'insertProfiles'}}).then(function(data){
                         if(data.status == 200){                                    
                             switch(data.data.data){
                                 case "success" :
@@ -34,10 +44,6 @@ boann.controller('ProfileController', ['$scope', '$http', '$window', function($s
         break;
 
         case "profiles" :
-
-            console.log($window.location.search.split("=")[1]);
-
-
             $scope.searchProfile = function(data){
                 if(data){
                     var VALUES = [{data:true, data:data}];

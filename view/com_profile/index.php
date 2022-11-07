@@ -12,6 +12,13 @@
     
 
     switch($action){
+        case "fullProfile" :
+            if($input->exist()){
+                $uuid = !empty($input->get("data")) ? escape($input->get("data")) : null;
+                echo json_encode($profile->fullProfile($uuid));
+            }
+        break;
+        
         case "insertProfiles" :
             if($input->exist()){
                 $citizenid      =   !empty( $input->get("data")["citizenid"])       ? escape($input->get("data")["citizenid"])      : null;
@@ -42,7 +49,7 @@
                     ];
                     //$profile->create($postArray)
                     
-                    if(1 > 0){                        
+                    if($profile->create($postArray) > 0){                        
                         $dataArray = [
                             "data"          =>  "success",
                             "dataURL"       =>  "./profiles.php?citizenid={$citizenid}",
@@ -60,7 +67,6 @@
                     ];
                 }
                     echo json_encode($dataArray);
-
             }
         break;
 
@@ -74,7 +80,7 @@
                         /*$dataArray    =   [
                             "data"  =>  "success"
                         ];*/
-                        
+
                         foreach($profiles as $person){
                             $dataArray[]    =   [
                                 "puuid"         =>  "{$person->puuid}",

@@ -43,6 +43,7 @@
                                         <div class="boann_input">
                                             <label>GB Datum : </label>
                                             <input class="form-control input_boann" ng-model="form.datesofbirth">
+                                            <span>20/02/1980</span>
                                         </div>
 
                                         <div class="boann_input">

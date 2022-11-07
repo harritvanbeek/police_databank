@@ -51,9 +51,7 @@
                                                 </td>
                                             </tr>                                            
                                         </table>
-                                        <hr>
-                                       <!--  <span ng-bind-html="people.avatar"></span></br> -->
-                                   
+                                        <hr>                                                                         
                                     </li>                                    
                                 </ul>
 
