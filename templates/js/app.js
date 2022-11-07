@@ -43,4 +43,4 @@ $(document).ready(
     }
  );
 
-var boann = angular.module('BoannApp', ['ngSanitize', 'ui.router', 'ui.tinymce', 'ui.bootstrap']);	
+var boann = angular.module('BoannApp', ['ngSanitize', 'ui.tinymce', 'ui.bootstrap']);	

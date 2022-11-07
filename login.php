@@ -1,3 +1,8 @@
+<?php 
+    require_once "./libraries/config.php";
+    $login      = new \classes\view\loginView;
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +10,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>BOANN starcitzen login</title>
+    <title>Politie Databank login</title>
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link href="<?php echo THEMES; ?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo THEMES; ?>/css/mdb.min.css" rel="stylesheet">
     <link href="<?php echo THEMES; ?>/css/boann.min.css?v=<?php echo $_SERVER['REQUEST_TIME']; ?>" rel="stylesheet">
 </head>
-<body ng-app="BoannApp">
+<body>
     <div class="application">
         <div class="background_container">
             <div class="fullpage_container">
@@ -29,23 +34,29 @@
                                 <div class="logo text-center">
                                     <h1>Politie DataBank</h1>
                                 </div>
-
-                                <form method="post" action="./">
+                                
+                                <?php if(!empty($_SESSION["error"])) : ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?php echo $_SESSION["error"]; ?>                                    
+                                    </div>
+                                <?php endif; ?>
+                                
+                                <form action="" method="post">
                                     <div class="form-group boann_input">
-                                        <label>Username  :</label>
-                                        <input class="form-control input_boann" name="username" type="text" name="name">
+                                        <label>Gebruikersnaam  :</label>
+                                        <input class="form-control input_boann" type="text" name="username" >
                                     </div>
 
                                     <div class="form-group boann_input">
                                         <label>Wachtwoord :</label>
-                                        <input class="form-control input_boann" name="password" type="password" name="password">
+                                        <input class="form-control input_boann" type="password" name="password">
                                     </div>                                  
                                     
                                     <hr>
 
                                     <div class="form-group text-center">
-                                        <button type="submit" class="btn btn-sm btn-primary">Inloggen</button>
-                                        <a ui-sref="wachtwoord_vergeten" class="btn btn-sm btn-primary">Wachtwoord vergeten</a>
+                                        <input type="submit" class="btn btn-sm btn-primary" value="Inloggen">
+                                        <a class="btn btn-sm btn-primary">Wachtwoord vergeten</a>
                                     </div>
                                 </form>
 
@@ -60,13 +71,6 @@
         <script src="<?php echo THEMES; ?>/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="<?php echo THEMES; ?>/js/popper.min.js"></script>
         <script type="text/javascript" src="<?php echo THEMES; ?>/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/mdb.min.js"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/angular.min.js"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/angular-sanitize.min.js"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/angular-sanitize.min.js"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/sweetalert.min.js?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/login.min.js?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/boann_login.min.js?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>"></script>
-        <script type="text/javascript" src="<?php echo THEMES; ?>/js/boann.controller.min.js?v=<?php echo $_SERVER["REQUEST_TIME"]; ?>"></script>
+        <script type="text/javascript" src="<?php echo THEMES; ?>/js/mdb.min.js"></script>        
 </body>
 </html>

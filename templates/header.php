@@ -20,7 +20,8 @@
 <body ng-app="BoannApp">
     <div class="application">
         
-        <div ui-view="navbar"></div>        
+        <div ui-view="navbar"></div>  
+            <?php include dirname(dirname(__FILE__))."/html/menu/navbar.php" ?>      
         <div class="background_container">
             <div class="fullpage_container">
                 <div class="background_assets"></div>
@@ -29,7 +30,7 @@
         <div class="scroll-container dark-scrollbar">
             <div class="fullpage_container">
                 <div class="sidebarcontainer_sidebarcontainer">
-                    <div ui-view="sidebar"></div>
+                    <?php include dirname(dirname(__FILE__))."/html/menu/sitebar.php" ?>
                 </div>
 
                 <div class="Page-page Scroller-scroller Scroller-none">

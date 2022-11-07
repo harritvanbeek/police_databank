@@ -26,9 +26,9 @@ class fivem_db{
 			$this->_USERNAME	=	!empty($this->CONFIG->get("fivem/username"))	? $this->CONFIG->get("fivem/username") 	: null;
 			$this->_PASSWORD	=	!empty($this->CONFIG->get("fivem/password"))	? $this->CONFIG->get("fivem/password") 	: null;
 
-			$this->_PDO = NEW \PDO("mysql:host={$this->_HOST};dbname={$this->_DBNAME}", "{$this->_USERNAME}", "{$this->_PASSWORD}");
-			$this->_PDO->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-		}catch(\PDOException $e){
+			$this->_PDO = NEW PDO("mysql:host={$this->_HOST};dbname={$this->_DBNAME}", "{$this->_USERNAME}", "{$this->_PASSWORD}");
+			$this->_PDO->setAttribute(PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+		}catch(PDOException $e){
 			$array 	=	[
 				"errorMessinger"	=> "{$e->getMessage()}",
 				"LineNumber"		=>	"{$e->getLine()}",

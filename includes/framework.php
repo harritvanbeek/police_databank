@@ -1,8 +1,27 @@
 <?php
 	defined('_BOANN') or header("Location:{$_SERVER["REQUEST_SCHEME"]}://{$_SERVER["SERVER_NAME"]}");
-	session_start();
-	@ini_set('magic_quotes_runtime', 0);
+	
+	ini_set('session.cookie_samesite', 'None');
+	ini_set("session.hash_function","sha512");
 
+	$secure     = true; 	// if you only want to receive the cookie over HTTPS
+	$httponly   = false; 	// prevent JavaScript access to session cookie
+
+	if(PHP_VERSION_ID < 70300) {
+		session_set_cookie_params(1800, '/; samesite=\'None\'', $_SERVER['HTTP_HOST'], $secure, $httponly);
+	}else{
+		session_set_cookie_params([
+			'lifetime' => 1800,
+			'path' => '/',
+			'domain' => $_SERVER['HTTP_HOST'],
+			'secure' => $secure,
+			'httponly' => $httponly,
+			'samesite' => 'None'
+		]);
+	}
+
+	session_start();
+	
     if(file_exists(BPATH_CONFIGURATION . '/devConfig.php')){
         require_once BPATH_CONFIGURATION . '/devConfig.php';
     }else{

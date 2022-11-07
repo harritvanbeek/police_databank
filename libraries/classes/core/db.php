@@ -33,6 +33,9 @@ class db{
 				"File"				=>	"{$e->getFile()}",
 			];
 
+			debug($array);
+			die;
+
 			$this->file = DIRNAME(DIRNAME(DIRNAME(__FILE__))).DS."logfiles".DS."database.log";
 			if( file_exists($this->file) ){
 				unlink($this->file);
@@ -46,7 +49,7 @@ class db{
 			fputs($handle,$logzeile);
 			fclose($handle);
 
-			die("sorry whe have a database problem, try later again!");
+			//die("sorry whe have a database problem, try later again!");
 		}
 	}
 

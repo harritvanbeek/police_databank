@@ -1,13 +1,9 @@
 <?php
-    define('_BOANN', 1);
-    if (defined('_BOANN'))
-    {
-        //include default settings
-        define('BPATH_BASE',    dirname(__FILE__) );
+   
+   require_once dirname(__file__)."/libraries/config.php";
 
-        require_once BPATH_BASE . '/includes/defines.php';
-        require_once BPATH_BASE . '/includes/framework.php';
-
-        $view   = NEW \classes\view\renderView;
-        $view->view($view);         
-    }
+   if(!empty($_SESSION["useruuid"])){
+      header("location: ".SITE."/dasboard.php");
+   }else{
+      header("location: ".SITE."/login.php");
+   }

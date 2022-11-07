@@ -1,26 +1,16 @@
 <?php
-namespace classes\view;
-    defined('_BOANN') or header("Location:{$_SERVER["REQUEST_SCHEME"]}://{$_SERVER["SERVER_NAME"]}");
+namespace classes\core;
+defined('_BOANN') or header("Location:{$_SERVER["REQUEST_SCHEME"]}://{$_SERVER["SERVER_NAME"]}");
 
-class renderView{
+class security{
 
     private     $_DB           =   NULL;
 
     public function __construct(){
         $this->_DB             = NEW \classes\core\db;
-    }
-
-    public function header(){
-        //chek user session is empty        
         if(self::userSessionExists() < 1){
             header("location: ".SITE."/login.php");
-        }else{
-            require_once "./templates/header.php";
         }
-    }
-    
-    public function footer(){
-        require_once "./templates/footer.php";
     }
 
     protected function userSessionExists(){
@@ -28,5 +18,4 @@ class renderView{
         $this->query = "SELECT COUNT(`uuid`) as `exist` FROM `users` WHERE `uuid` = :usersession ";
         return $this->_DB->get($this->query, $this->array)->exist;
     }
-    
 }
