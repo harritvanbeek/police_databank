@@ -1,9 +1,0 @@
-
-
-########## 06.11.2022 16:49:07 ##########
-array (
-  'errorMessinger' => 'SQLSTATE[HY000] [1045] Access denied for user \'u45525p41851_databank\'@\'81-206-183-26.fixed.kpn.net\' (using password: YES)',
-  'LineNumber' => '27',
-  'File' => 'D:\\htdocs\\police_databank\\libraries\\classes\\core\\db.php',
-)
-

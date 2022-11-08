@@ -3,15 +3,27 @@ boann.controller('DocumentenController', ['$scope', '$http', '$window', function
 
     var statePage       = $window.location.pathname.split("/")[2].split(".")[0];
     var searchPage      = $window.location.search.split("=")[1];
-    var URI             = controler.view + "profile/index.php"; 
+    var URI             = controler.view + "documenten/index.php"; 
     $scope.profile      = "false";
     $scope.noprofile    = "false";
     
     console.log(statePage);
 
-    var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    //select
-    console.log( $("select") )
+    switch(statePage){
+        case "new-document" :
+            $scope.save = function(data){
+                if(data){
+                    var VALUES = [{data:true, data:data, puuid:searchPage}];  
+                    $http.post(URI, VALUES, {params:{action:'setDocument'}}).then(function(data){
+                        //$scope.people = data.data;
+                        console.log(data.data);
+                    });
+                }                
+            }
+        break;
+    }
+
+    var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;    
     $scope.tinymceOptions = {
 
         plugins: 'link image code template',

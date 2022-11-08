@@ -19,12 +19,6 @@
         </div>
     </div>
 
-    <style>
-        select{
-            display: block!important;
-        }
-    </style>
-
     <div class="PageContent-pageContent Scroller-scroller Scroller-vertical">
         <div class="DiscoverPage-discoverPageContent PageContent-innerPageContent">
             <div style="margin-bottom: 20px">
@@ -32,15 +26,15 @@
                     <div class="card-body">
                         <div class="boann_input">
                             <label>Omschrijving</label>
-                            <input class="form-control input_boann">
+                            <input class="form-control input_boann" ng-model="form.discription">
                         </div>
 
                         <div class="boann_input">
                             <label>Bevinding</label></br>
-                            <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>
+                            <textarea ui-tinymce="tinymceOptions" ng-model="form.tinymceModel"></textarea>
                         </div>
 
-                        <button class="btn btn-sm btn-primary">Opslaan</button>
+                        <button ng-click="save(form)" class="btn btn-sm btn-primary">Opslaan</button>
                     </div>
                 </div>
             </div>

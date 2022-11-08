@@ -80,6 +80,7 @@
         transition: background-color .2s;
         border: 0px;
     }
+
     .select-input{
         color: #eee;
         .input-select{
@@ -95,4 +96,8 @@
             }
         }       
     }   
+}
+
+select{
+    display: block !important;
 }

@@ -9,9 +9,28 @@
     $settings   =   NEW \classes\core\settings;
     $input      =   NEW \classes\core\input;
     $profile    =   NEW \classes\view\profileView;
-    
+    $ducument   =   NEW \classes\view\documentenView;
 
     switch($action){
+        case "listDocuments" :
+            if($input->exist()){
+                $uuid       = !empty($input->get("data")) ? escape($input->get("data")) : null;
+                $dossier    = $ducument->getAllDocuments($uuid);
+                if(!empty($dossier)){
+                    foreach($dossier as $item){
+                        $dataArray[]    =   [
+                            "ruuid"     =>  "{$item->ruuid}",
+                            "dosid"     =>  explode("-", "{$item->ruuid}")[0],
+                            "title"     =>  "{$item->title}",
+                            "postdate"  =>  "{$item->postdate}",
+                        ];
+                    }
+                    
+                    echo json_encode($dataArray);
+                }  
+            }
+        break;
+
         case "fullProfile" :
             if($input->exist()){
                 $uuid = !empty($input->get("data")) ? escape($input->get("data")) : null;

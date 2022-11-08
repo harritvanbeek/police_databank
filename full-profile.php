@@ -95,32 +95,14 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td class="text-white">123456789</td>
-                                            <td class="text-white">Bank overval</td>
-                                            <td class="text-white">11/7/2022</td>
-                                            <td class="text-white">
-                                                Lees Dossier
+                                        <tr ng-repeat="document in documenten | filter:search">
+                                            <td class="text-white" ng-bind-html="document.dosid"></td>
+                                            <td class="text-white" ng-bind-html="document.title"></td>
+                                            <td class="text-white" ng-bind-html="document.postdate"></td>
+                                            <td class="text-white">  
+                                                <a href="document.php?ruuid={{document.ruuid}}" class="btn btn-sm btn-primary">Lees Dossier</a>                                              
                                             </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="text-white">123456789</td>
-                                            <td class="text-white">Winkel overval</td>
-                                            <td class="text-white">11/7/2022</td>
-                                            <td class="text-white">
-                                                Lees Dossier
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="text-white">123456789</td>
-                                            <td class="text-white">huis inbraak</td>
-                                            <td class="text-white">11/7/2022</td>
-                                            <td class="text-white">
-                                                Lees Dossier
-                                            </td>
-                                        </tr>
+                                        </tr>                                        
                                     </tbody>
                                 </table>
 

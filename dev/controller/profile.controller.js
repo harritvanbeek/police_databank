@@ -11,11 +11,9 @@ boann.controller('ProfileController', ['$scope', '$http', '$window', function($s
 
     switch(statePage){
         case "full-profile" :
-            var VALUES = [{data:true, data:searchPage}];  
-            $http.post(URI, VALUES, {params:{action:'fullProfile'}}).then(function(data){
-                $scope.people = data.data;
-                console.log(data.data);
-            });
+            fullProfile(searchPage);
+            listDocuments(searchPage);
+            
 
         break;
 
@@ -69,6 +67,22 @@ boann.controller('ProfileController', ['$scope', '$http', '$window', function($s
                 }
             }
         break;
+    }
+
+
+    function listDocuments(){
+        var VALUES = [{data:true, data:searchPage}];  
+        $http.post(URI, VALUES, {params:{action:'listDocuments'}}).then(function(data){
+            $scope.documenten = data.data;
+            console.log(data.data);
+        });
+    }
+
+    function fullProfile(){
+        var VALUES = [{data:true, data:searchPage}];  
+        $http.post(URI, VALUES, {params:{action:'fullProfile'}}).then(function(data){
+            $scope.people = data.data;            
+        });
     }
 
 
