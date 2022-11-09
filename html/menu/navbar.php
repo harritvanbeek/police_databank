@@ -2,7 +2,7 @@
     <div class="navbar_container" ng-controller="NavbarController">
         <div class="navbar_left navbar_side">
             <a ng-click="sidebar(sbar)" class="navbariconbutton_button"><i class="fas fa-bars"></i></a>
-            <a ng-click="home()" class="navbariconbutton_button"><i class="fas fa-home"></i></a>
+            <a href="dasboard.php" class="navbariconbutton_button white-text"><i class="fas fa-home"></i></a>
             <a ng-click="history()" class="navbariconbutton_button">
                 <i class="fas fa-arrow-alt-circle-left"></i>
             </a>

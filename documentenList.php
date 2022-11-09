@@ -5,7 +5,7 @@
 
 <div class="PageHeader-pageHeader">
     <div class="PageHeaderLeft-pageHeaderLeft">
-        Dasboard
+        Documenten Lijst
     </div>
 
     <div class="PageHeaderLeft-pageHeaderRight">
@@ -22,17 +22,6 @@
     <div class="DiscoverPage-discoverPageContent PageContent-innerPageContent">
         <div style="margin-bottom: 20px">
             
-            <div class="row">
-                <div class="col-lg-4">
-                    <h5>Recente reportages</h5>
-                </div>
-                <div class="col-lg-4">
-                    <h5>Recente voertuigen</h5>
-                </div>
-                <div class="col-lg-4">
-                    <h5>Recente zoekopdrachten</h5>
-                </div>
-            </div>
         </div>
     </div>
 </div>

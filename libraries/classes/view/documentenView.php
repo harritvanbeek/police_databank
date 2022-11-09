@@ -12,6 +12,30 @@ class documentenView{
     }
 
 
+    public function thisDocument($data = ""){
+        $this->select = "
+                            `documenten`.`ruuid`,
+                            `documenten`.`title`,
+                            `documenten`.`raport`,
+                            `documenten`.`postdate`,
+                            `profiles`.`firstname`,
+                            `profiles`.`lastname`,
+                            `users`.`name`,
+                            `users`.`rank`
+                        ";
+        $this->query = "SELECT {$this->select} 
+                            
+                            FROM `documenten` 
+                                LEFT JOIN `profiles`
+                                ON `documenten`.`puuid` = `profiles`.`puuid`
+
+                                LEFT JOIN `users`
+                                ON `documenten`.`UserUuid` = `users`.`uuid`
+                                
+                            WHERE `documenten`.`ruuid` = '{$data}' ";
+        return $this->_DB->get($this->query);
+    }
+
     public function create($data = []){
         $this->query = "INSERT INTO `documenten` (`ruuid`, `puuid`, `UserUuid`, `title`, `raport`, `postdate`) 
                             VALUES (:ruuid, :puuid, :UserUuid, :title, :raport, :postdate) ";
@@ -20,7 +44,11 @@ class documentenView{
 
     public function getAllDocuments($data){
         $this->array = ["uuid" => "{$data}"];
-        $this->query = "SELECT * FROM `documenten` WHERE `puuid` = :uuid";
+        $this->query = "SELECT * 
+                            FROM `documenten` 
+                            WHERE `puuid` = :uuid
+                            ORDER BY `documenten`.`postdate` ASC
+                        ";
         return $this->_DB->getAll($this->query, $this->array); 
     }
 

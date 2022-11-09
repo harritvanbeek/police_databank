@@ -2,6 +2,11 @@
     require_once "./libraries/config.php";    
     $view->header();   
 ?>
+<style>
+    select{
+        display: block !important;
+    }
+</style>
 
 <div ng-controller="DocumentenController">
     <div class="PageHeader-pageHeader">

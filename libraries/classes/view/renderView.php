@@ -10,6 +10,12 @@ class renderView{
         $this->_DB             = NEW \classes\core\db;
     }
 
+    public function isAdmin(){
+        if(self::_isAdmin()->role !== "admin"){
+            header("location: ".SITE."/login.php");
+        };
+    }
+
     public function header(){
         //chek user session is empty        
         if(self::userSessionExists() < 1){
@@ -28,5 +34,11 @@ class renderView{
         $this->query = "SELECT COUNT(`uuid`) as `exist` FROM `users` WHERE `uuid` = :usersession ";
         return $this->_DB->get($this->query, $this->array)->exist;
     }
+
+    protected function _isAdmin(){
+        $this->array =  ["usersession" => "{$_SESSION["useruuid"]}"];
+        $this->query = "SELECT * FROM `users` WHERE `uuid` = :usersession ";
+        return $this->_DB->get($this->query, $this->array);
+    } 
     
 }

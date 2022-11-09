@@ -10,17 +10,40 @@ boann.controller('DocumentenController', ['$scope', '$http', '$window', function
     console.log(statePage);
 
     switch(statePage){
+        case "document" :
+            getThisDocument(searchPage);
+        break;
+
         case "new-document" :
             $scope.save = function(data){
                 if(data){
                     var VALUES = [{data:true, data:data, puuid:searchPage}];  
                     $http.post(URI, VALUES, {params:{action:'setDocument'}}).then(function(data){
-                        //$scope.people = data.data;
-                        console.log(data.data);
+                        if(data.status == 200){
+                            switch(data.data.data){
+                                case "success" :
+                                    location.href = data.data.dataURL;                                    
+                                break;
+
+                                case "error" :
+                                    swal("Oeps!", data.data.dataContent, "error");
+                                break;
+                            }
+                            console.log(data.data);
+                        }
                     });
                 }                
             }
         break;
+    }
+
+
+    function getThisDocument(searchPage){
+        var VALUES = [{data:true, data:searchPage}];  
+        $http.post(URI, VALUES, {params:{action:'thisDocument'}}).then(function(data){
+            $scope.ducument = data.data;
+            console.log(data.data);
+        });
     }
 
     var useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;    
@@ -52,7 +75,7 @@ boann.controller('DocumentenController', ['$scope', '$http', '$window', function
 
             {
                 title: 'Proces Verbaal Aanhouding',
-                url: './html/templates/test2.htm',
+                url: './html/templates/proces_verbaal_aanhouding.htm',
                 description: 'Aanhouding verichten.'
             },
 

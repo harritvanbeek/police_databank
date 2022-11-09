@@ -11,6 +11,26 @@
     $ducument   =   NEW \classes\view\documentenView;
 
     switch ($action) {
+        case "thisDocument" :
+            if($input->exist()){
+                $ruuid          = !empty($input->get("data")) ? $input->get("data") : null;
+                $thisDocument   = $ducument->thisDocument($ruuid);
+                if($thisDocument){
+                    $dataArray  =   [
+                        "code"      =>  explode("-", "{$thisDocument->ruuid}")[0] ,
+                        "title"     =>  "{$thisDocument->title}",
+                        "raport"    =>  "{$thisDocument->raport}",
+                        "postdate"  =>  "{$thisDocument->postdate}",
+                        "firstname" =>  "{$thisDocument->firstname}",
+                        "lastname"  =>  "{$thisDocument->lastname}",
+                        "name"      =>  "{$thisDocument->name}",
+                        "rank"      =>  "{$thisDocument->rank}",
+                    ];
+                    echo json_encode($dataArray);
+                }  
+            }
+        break;
+
         case 'setDocument':
             if($input->exist()){
                 $puuid          =  !empty($input->get("puuid"))                    ? $input->get("puuid")                          : null;
@@ -30,7 +50,16 @@
                         "postdate"  => "{$postDate}",
                     ];
                     
-                    debug($ducument->create($dataArray), 1);
+                    if($ducument->create($dataArray)> 0){
+                        $dataArray = [
+                            "data"          =>  "success",
+                            "dataContent"   =>  "",
+                            "dataURL"       =>  "full-profile.php?puuid={$puuid}",
+                        ];
+                    }else{
+
+                    };
+                        echo json_encode($dataArray);
                 }
             }
         break;

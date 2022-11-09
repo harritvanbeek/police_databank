@@ -12,7 +12,7 @@
         <div class="PageHeaderLeft-pageHeaderRight">
                <!-- ng-if="profile == 'true'" --> 
 
-            <div class="quicksearch_inputcontainer">
+            <div ng-if="profile == 'true'" class="quicksearch_inputcontainer">
                 <div class="quicksearchinput_container">
                         <label for="search" class="quicksearchinput_icon">Search</label>
                         <input id="search" class="quicksearchinput_searchinput" ng-model="search" type="text" autocomplete="off" spellcheck="false">
@@ -36,24 +36,29 @@
                                     <a ng-if="noprofile == 'true'" class="btn btn-sm btn-primary" href="add-profile.php">Maak een profiel</a>
                                 </div>
                                 
-                                <ul class="police_profile" ng-if="peoples.length">
-                                    <li ng-repeat="people in peoples">
-                                        <table class="table ">
-                                            <tr>
-                                                <td class="text-white">Naam :</td>
-                                                <td class="text-white">
-                                                    <span ng-bind-html="people.firstname"></span>
-                                                    <span ng-bind-html="people.lastname"></span>
-                                                </td>
-                                                <td class="text-white">
-                                                    <a href="full-profile.php?puuid={{people.puuid}}" class="text-white"><i class="far fa-eye"></i></a>
-                                                    <a href="full-profile.php?puuid={{people.puuid}}" class="text-white"><i class="fas fa-pen"></i></a>
-                                                </td>
-                                            </tr>                                            
-                                        </table>
-                                        <hr>                                                                         
-                                    </li>                                    
-                                </ul>
+                                <table ng-if="peoples.length" class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>Naam</th>
+                                            <th>GB Datum</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tr ng-repeat="people in peoples">
+                                        <td class="text-white">
+                                            <span ng-bind-html="people.firstname"></span>
+                                            <span ng-bind-html="people.lastname"></span>
+                                        </td>
+
+                                        <td class="text-white">
+                                            <span ng-bind-html="people.datesofbirth"></span>                                            
+                                        </td>
+                                        <td class="text-white">
+                                            <a href="full-profile.php?puuid={{people.puuid}}" class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>                                                    
+                                        </td>
+                                    </tr>                                            
+                                </table>                               
 
                             </div>
                         </div>

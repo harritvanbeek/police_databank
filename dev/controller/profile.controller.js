@@ -32,7 +32,6 @@ boann.controller('ProfileController', ['$scope', '$http', '$window', function($s
                                     swal("Oeps!", data.data.dataContent, "error");
                                 break;
                             }
-
                         }
                     });
                 }else{
