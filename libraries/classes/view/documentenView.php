@@ -12,6 +12,16 @@ class documentenView{
     }
 
 
+    public function getList(){
+        $this->query = "SELECT * 
+                            FROM `documenten` 
+                                LEFT JOIN `users`
+                                ON `documenten`.`UserUuid` = `users`.`uuid`
+                            ORDER BY `documenten`.`postdate` ASC
+                        ";
+        return $this->_DB->getAll($this->query); 
+    }
+
     public function thisDocument($data = ""){
         $this->select = "
                             `documenten`.`ruuid`,

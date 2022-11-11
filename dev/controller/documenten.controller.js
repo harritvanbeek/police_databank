@@ -10,6 +10,15 @@ boann.controller('DocumentenController', ['$scope', '$http', '$window', function
     console.log(statePage);
 
     switch(statePage){
+        case "documentenList" :
+            $http.get(URI, {params:{action:"documentenList"}}).then(function(data){
+                if(data.status == 200){
+                    $scope.documenten = data.data;
+                    console.log(data.data);
+                }
+            });
+        break;
+
         case "document" :
             getThisDocument(searchPage);
         break;

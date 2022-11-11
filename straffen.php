@@ -29,8 +29,8 @@
                                 <h6 ng-bind-html="straf.name"></h6>
                                 <p ng-bind-html="straf.description"></p>
                                 <hr>
-                                <label>Bedrag :</label> <span ng-bind-html="straf.fine"></span><br>
-                                <label>Celstraff :</label> <span ng-bind-html="straf.months"></span> <span>Maanden = (minuten)</span>
+                                <label>Bedrag :</label> <span ng-bind-html="straf.fine | currency:'€ '"></span><br>
+                                <label>Celstraff :</label> <span ng-bind-html="straf.months"></span> <span>Maanden = (<span ng-bind-html="straf.months"></span>  Minuten)</span>
                             </div>
                         </div>
                     </div>                

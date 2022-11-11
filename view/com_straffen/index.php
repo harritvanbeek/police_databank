@@ -12,6 +12,15 @@
 
     switch($action){
         case "allStraffen" :
-            echo json_encode($straffen->getAllStraffen());
+        foreach($straffen->getAllStraffen() as $item){
+            $dataArray[] = [
+                "id"            =>  "{$item->id}",
+                "name"          =>  escape("{$item->name}"),
+                "description"   =>  escape("{$item->description}"),
+                "fine"          =>  "{$item->fine}",
+                "months"        =>  "{$item->months}",
+            ];            
+        }
+            echo json_encode($dataArray);
         break;
     }

@@ -11,6 +11,21 @@
     $ducument   =   NEW \classes\view\documentenView;
 
     switch ($action) {
+        case "documentenList" :
+            foreach($ducument->getList() as $item){
+                if(empty($item->puuid)){
+                    $dataArray[] =  [
+                        "ruuid"     =>  "{$item->ruuid}",
+                        "code"      =>  explode("-", "{$item->ruuid}")[0],
+                        "title"     =>  "{$item->title}",
+                        "name"      =>  "{$item->name}",
+                        "postdate"  =>  "{$item->postdate}",
+                    ];
+                }
+            }
+                echo json_encode($dataArray);
+        break;
+
         case "thisDocument" :
             if($input->exist()){
                 $ruuid          = !empty($input->get("data")) ? $input->get("data") : null;
@@ -43,7 +58,7 @@
                     $postDate   = date("Y-m-d h:i:s");
                     $dataArray = [
                         "ruuid"     => "{$settings->MakeUuid()}",
-                        "puuid"     => "{$puuid}",
+                        "puuid"     => $puuid,
                         "UserUuid"  => "{$_SESSION["useruuid"]}",
                         "title"     => "{$title}",
                         "raport"    => "{$raport}",
@@ -51,11 +66,20 @@
                     ];
                     
                     if($ducument->create($dataArray)> 0){
-                        $dataArray = [
-                            "data"          =>  "success",
-                            "dataContent"   =>  "",
-                            "dataURL"       =>  "full-profile.php?puuid={$puuid}",
-                        ];
+                        if(empty($puuid)){
+                            $dataArray = [
+                                "data"          =>  "success",
+                                "dataContent"   =>  "",
+                                "dataURL"       =>  "documentenList.php",
+                            ];
+                        }else{
+                            $dataArray = [
+                                "data"          =>  "success",
+                                "dataContent"   =>  "",
+                                "dataURL"       =>  "full-profile.php?puuid={$puuid}",
+                            ];
+                        };
+
                     }else{
 
                     };
