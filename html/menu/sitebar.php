@@ -9,9 +9,9 @@
                 <li class="SidebarListItem"><a>Huizen</a></li>
                 <li class="SidebarListItem"><a>Opspoering</a></li>
                 <hr>
-                <li class="SidebarListItem"><a>Straffen</a></li>
+                <li class="SidebarListItem"><a href="straffen.php">Straffen</a></li>
                 <li class="SidebarListItem"><a>Wetten</a></li>
-                
+
             </ul>
     </div>
 </div>
