@@ -1,10 +1,10 @@
 <?php
 	defined('_BOANN') or header("Location:{$_SERVER["REQUEST_SCHEME"]}://{$_SERVER["SERVER_NAME"]}");
-	
-	ini_set('session.cookie_samesite', 'None');
+
+	/* ini_set('session.cookie_samesite', 'None');
 	ini_set("session.hash_function","sha512");
 
-	$secure     = true; 	// if you only want to receive the cookie over HTTPS
+	$secure     = false; 	// if you only want to receive the cookie over HTTPS
 	$httponly   = false; 	// prevent JavaScript access to session cookie
 
 	if(PHP_VERSION_ID < 70300) {
@@ -18,10 +18,10 @@
 			'httponly' => $httponly,
 			'samesite' => 'None'
 		]);
-	}
+	} */
 
 	session_start();
-	
+
     if(file_exists(BPATH_CONFIGURATION . '/devConfig.php')){
         require_once BPATH_CONFIGURATION . '/devConfig.php';
     }else{
@@ -69,14 +69,14 @@ $GLOBALS["config"]	=	[
 	"mysql"		=>	[
 		"host"		=>	"{$config->local_host}",
 		"username"	=>	"{$config->local_dbuser}",
-		"dbName"	=>	"{$config->local_dbname}",		
+		"dbName"	=>	"{$config->local_dbname}",
 		"password"	=>	"{$config->local_dbpassword}",
 	],
 
 	"fivem"		=>	[
 		"host"		=>	"{$config->fivem_host}",
 		"username"	=>	"{$config->fivem_dbuser}",
-		"dbName"	=>	"{$config->fivem_dbname}",		
+		"dbName"	=>	"{$config->fivem_dbname}",
 		"password"	=>	"{$config->fivem_dbpassword}",
 	],
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace classes\view;
     defined('_BOANN') or header("Location:{$_SERVER["REQUEST_SCHEME"]}://{$_SERVER["SERVER_NAME"]}");
@@ -12,8 +12,28 @@ class userView{
     }
 
 
+    public function UpdateUser($data, $uuid){
+        $this->query = "UPDATE `users`
+                            SET
+                                `username`   = '{$data['username']}',
+                                `name`       = '{$data['name']}',
+                                `callsign`   = '{$data['callsign']}',
+                                `rank`       = '{$data['rank']}',
+                                `premission` = '{$data['premission']}'
+
+                            WHERE `uuid` = '{$uuid}'
+                        ";
+        return $this->_DB->action($this->query);
+    }
+
+    public function getThisUser($uuid){
+        $this->array = ["uuid" => "{$uuid}"];
+        $this->query = "SELECT * FROM `users` WHERE `uuid` = :uuid ";
+        return $this->_DB->get($this->query, $this->array);
+    }
+
     public function register($data){
-        $this->query =  "INSERT INTO `users` (`uuid`, `username`, `password`, `name`, `role`, `rank`) 
+        $this->query =  "INSERT INTO `users` (`uuid`, `username`, `password`, `name`, `role`, `rank`)
                             VALUES(:uuid, :username, :password, :name, :role, :rank)
                         ";
         return $this->_DB->action($this->query, $data);
@@ -26,8 +46,8 @@ class userView{
 
     public function me(){
         $this->array =  ["userSession" => "{$_SESSION["useruuid"]}"];
-        $this->query =  "SELECT `username`, `name`, `role`, `rank`, `last_login` 
-                            FROM `users` 
+        $this->query =  "SELECT `username`, `name`, `role`, `rank`, `last_login`
+                            FROM `users`
                             WHERE `uuid` = :userSession ";
         return $this->_DB->get($this->query, $this->array);
     }

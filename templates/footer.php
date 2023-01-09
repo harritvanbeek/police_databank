@@ -2,6 +2,10 @@
     </div>
 </div>
 
+    <script id="__bs_script__">//<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.27.10'><\/script>".replace("HOST", location.hostname));
+    //]]></script>
+
     <script type="text/javascript" src="<?php echo THEMES; ?>/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo THEMES; ?>/js/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
     <script type="text/javascript" src="<?php echo THEMES; ?>/js/jquery-ui-1.12.1/jquery-ui.js"></script>

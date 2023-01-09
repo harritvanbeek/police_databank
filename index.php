@@ -1,5 +1,5 @@
 <?php
-   
+
    require_once dirname(__file__)."/libraries/config.php";
 
    if(!empty($_SESSION["useruuid"])){

@@ -1,14 +1,8 @@
 <?php
-    require_once "./libraries/config.php";    
-    $view->header();   
-    $view->isAdmin();   
+    require_once "./libraries/config.php";
+    $view->header();
+    $view->isAdmin();
 ?>
-
-<style>
-    optgroup, option {
-      background-color: #2d2d2d !important;
-    }
-</style>
 <div ng-controller="AdminController">
     <div class="PageHeader-pageHeader">
         <div class="PageHeaderLeft-pageHeaderLeft">
@@ -28,35 +22,41 @@
     <div class="PageContent-pageContent Scroller-scroller Scroller-vertical">
         <div class="DiscoverPage-discoverPageContent PageContent-innerPageContent">
             <div style="margin-bottom: 20px">
-                <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#centralModalSm">Nieuw Gebruiker</button>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Naam</th>
-                            <th>Role</th>
-                            <th>Rank</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="user in users | filter:search">
-                            <td class="text-white" ng-bind-html="user.name"></td>
-                            <td class="text-white" ng-bind-html="user.role"></td>
-                            <td class="text-white" ng-bind-html="user.rank"></td>
-                            <td>
-                                <a class="text-white">Edit</a>
-                                <a class="text-white">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+        <div class="card dark_card">
+            <div class="card-body">
+                        <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#centralModalSm">Nieuw Gebruiker</button>
+                        <a href="#" type="button" class="btn btn-sm btn-primary float-right">Rangen</a>
+                        <a href="#" type="button" class="btn btn-sm btn-danger float-right">Prullenbak</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Naam</th>
+                                    <th>Role</th>
+                                    <th>Rank</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in users | filter:search">
+                                    <td class="text-white" ng-bind-html="user.name"></td>
+                                    <td class="text-white" ng-bind-html="user.role"></td>
+                                    <td class="text-white" ng-bind-html="user.rank"></td>
+                                    <td>
+                                        <a type="button" class="btn btn-sm btn-primary text-white" href="editUser.php?uuid={{user.uuid}}">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-danger text-white">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
 
             </div>
         </div>
     </div>
-
-
-
 
 <!-- Central Modal Small -->
 <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -73,21 +73,21 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+
       <div class="modal-body">
             <div class="boann_input">
                 <label>Gebruikersnaam</label>
-                <input class="form-control input_boann" ng-model="form.username"> 
-            </div> 
+                <input class="form-control input_boann" ng-model="form.username">
+            </div>
 
             <div class="boann_input">
                 <label>Fivem Naam</label>
-                <input class="form-control input_boann" ng-model="form.name"> 
-            </div> 
+                <input class="form-control input_boann" ng-model="form.name">
+            </div>
 
             <div class="boann_input">
                 <label>Wachtwoord</label>
-                <input class="form-control input_boann" ng-model="form.password"> 
+                <input class="form-control input_boann" ng-model="form.password">
             </div>
 
             <div class="boann_input">
@@ -99,14 +99,14 @@
                     <option value="agent">Agent</option>
                     <option value="hoofdagent">Hoofdagent</option>
                     <option value="brigadier">Brigadier</option>
-                    <option value="inspecteur">Irigadier</option>
+                    <option value="inspecteur">Inspecteur</option>
                     <option value="hoofdinspecteur">Hoofdinspecteur</option>
                     <option value="commissaris">Commissaris</option>
                     <option value="hoofdcommissaris">Hoofdcommissaris</option>
                     <option value="eerste hoofdcommissaris">Eerste hoofdcommissaris</option>
                 </select>
             </div>
-            
+
             <div class="boann_input">
                 <label>Role</label>
                 <select class="browser-default custom-select input_boann" ng-model="form.role">
@@ -117,7 +117,7 @@
             </div>
 
       </div>
-      
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
         <button ng-click="saveUser(form)" type="button" class="btn btn-primary btn-sm">Opslaan</button>
@@ -129,4 +129,3 @@
 </div>
 
 <?php $view->footer(); ?>
-
