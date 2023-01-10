@@ -23,16 +23,15 @@
         <div class="DiscoverPage-discoverPageContent PageContent-innerPageContent">
             <div style="margin-bottom: 20px">
 
-
-        <div class="card dark_card">
-            <div class="card-body">
+                <div class="card dark_card">
+                    <div class="card-body">
                         <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target="#centralModalSm">Nieuw Gebruiker</button>
                         <a href="#" type="button" class="btn btn-sm btn-primary float-right">Rangen</a>
-                        <a href="#" type="button" class="btn btn-sm btn-danger float-right">Prullenbak</a>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Naam</th>
+                                    <th>Roepnummer</th>
                                     <th>Role</th>
                                     <th>Rank</th>
                                     <th>Action</th>
@@ -41,18 +40,18 @@
                             <tbody>
                                 <tr ng-repeat="user in users | filter:search">
                                     <td class="text-white" ng-bind-html="user.name"></td>
+                                    <td class="text-white" ng-bind-html="user.callsign"></td>
                                     <td class="text-white" ng-bind-html="user.role"></td>
                                     <td class="text-white" ng-bind-html="user.rank"></td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-primary text-white" href="editUser.php?uuid={{user.uuid}}">Edit</a>
-                                        <button type="button" class="btn btn-sm btn-danger text-white">Delete</button>
+                                        <button type="button" class="btn btn-sm btn-danger text-white" ng-click="deleteUser(user.uuid)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -88,6 +87,11 @@
             <div class="boann_input">
                 <label>Wachtwoord</label>
                 <input class="form-control input_boann" ng-model="form.password">
+            </div>
+
+            <div class="boann_input">
+                <label>Roepnummer</label>
+                <input class="form-control input_boann" ng-model="form.callsign">
             </div>
 
             <div class="boann_input">

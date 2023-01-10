@@ -11,6 +11,28 @@ class userView{
         $this->_DB             = NEW \classes\core\db;
     }
 
+    public function nameExist($name = ""){
+        $this->array = ["name" => "{$name}"];
+        $this->query = "SELECT COUNT(`name`) AS Exist FROM `users` WHERE `name` = :name ";
+        return $this->_DB->get($this->query, $this->array)->Exist;
+    }
+
+    public function callsignExist($callsign = ""){
+        $this->array = ["callsign" => "{$callsign}"];
+        $this->query = "SELECT COUNT(`callsign`) AS Exist FROM `users` WHERE `callsign` = :callsign ";
+        return $this->_DB->get($this->query, $this->array)->Exist;
+    }
+
+    public function usernameExist($username = ""){
+        $this->array = ["username" => "{$username}"];
+        $this->query = "SELECT COUNT(`username`) AS Exist FROM `users` WHERE `username` = :username ";
+        return $this->_DB->get($this->query, $this->array)->Exist;
+    }
+
+    public function deleteUser($uuid = ""){
+        $this->query = "DELETE FROM `users` WHERE `uuid` = '{$uuid}' ";
+        return $this->_DB->action($this->query);
+    }
 
     public function UpdateUser($data, $uuid){
         $this->query = "UPDATE `users`
@@ -33,8 +55,8 @@ class userView{
     }
 
     public function register($data){
-        $this->query =  "INSERT INTO `users` (`uuid`, `username`, `password`, `name`, `role`, `rank`)
-                            VALUES(:uuid, :username, :password, :name, :role, :rank)
+        $this->query =  "INSERT INTO `users` (`uuid`, `username`, `password`, `name`, `callsign`, `role`, `rank`)
+                            VALUES(:uuid, :username, :password, :name, :callsign, :role, :rank)
                         ";
         return $this->_DB->action($this->query, $data);
     }
